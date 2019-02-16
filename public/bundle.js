@@ -57,17 +57,13 @@
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
-	var _testData = __webpack_require__(/*! ./testData */ 174);
-	
-	var _testData2 = _interopRequireDefault(_testData);
-	
 	var _App = __webpack_require__(/*! ./components/App */ 172);
 	
 	var _App2 = _interopRequireDefault(_App);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	_reactDom2.default.render(_react2.default.createElement(_App2.default, { contests: _testData2.default.contests }), document.getElementById('root'));
+	_reactDom2.default.render(_react2.default.createElement(_App2.default, { initialContests: window.initialData.contests }), document.getElementById('root'));
 
 /***/ },
 /* 1 */
@@ -21963,6 +21959,8 @@
 	  value: true
 	});
 	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	var _react = __webpack_require__(/*! react */ 1);
@@ -22000,15 +21998,14 @@
 	    }
 	
 	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = App.__proto__ || Object.getPrototypeOf(App)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
-	      pageHeader: 'Naming Contests'
+	      pageHeader: 'Naming Contests',
+	      contests: _this.props.initialContests
 	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
 	
 	  _createClass(App, [{
 	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      // timers, listeners
-	    }
+	    value: function componentDidMount() {}
 	  }, {
 	    key: 'componentWillUnmount',
 	    value: function componentWillUnmount() {
@@ -22024,8 +22021,8 @@
 	        _react2.default.createElement(
 	          'div',
 	          null,
-	          this.props.contests.map(function (contest) {
-	            return _react2.default.createElement(_ContestPreview2.default, contest);
+	          this.state.contests.map(function (contest) {
+	            return _react2.default.createElement(_ContestPreview2.default, _extends({ key: contest.id }, contest));
 	          })
 	        )
 	      );
@@ -22073,15 +22070,7 @@
 	exports.default = Header;
 
 /***/ },
-/* 174 */
-/*!***************************!*\
-  !*** ./src/testData.json ***!
-  \***************************/
-/***/ function(module, exports) {
-
-	module.exports = {"contests":[{"id":1,"categoryName":"Business/Company","contestName":"Cognitive Building Bricks"},{"id":2,"categoryName":"Magazine/Newsletter","contestName":"Educating people about sustainable food production"},{"id":3,"categoryName":"Software Component","contestName":"Big Data Analytics for Cash Circulation"},{"id":4,"categoryName":"Website","contestName":"Free programming books"}]}
-
-/***/ },
+/* 174 */,
 /* 175 */
 /*!******************************************!*\
   !*** ./src/components/ContestPreview.js ***!
